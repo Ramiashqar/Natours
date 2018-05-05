@@ -1,0 +1,79 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($black-color, .1);
+    background-color: rgba($headers-color, .7);
+    border-radius: 3px;
+    padding: 6rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 3rem;
+        margin: 0;
+        transform: skewX(0)
+    }
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        overflow: hidden;
+        transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+        @supports (clip-path: circle(50% at 50% 50%)) or (-webkit-clip-path: circle(50% at 50% 50%)){
+            -webkit-clip-path: circle(50% at 50% 50%);
+             clip-path: circle(50% at 50% 50%);
+             shape-outside: circle(51% at 50% 50%);
+
+        }
+        @include respond(tab-port) {
+            transform: translateX(-3rem) skewX(0);
+            margin-left: 1.5rem;
+        }
+        @include respond(phone) {
+            float: left;
+            width: 100%;
+            shape-outside: none;
+            clip-path: none;
+            margin-left: 0;
+
+
+        }
+    }
+    &__image {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.45);
+        backface-visibility: hidden;
+        transition: all .3s;
+        @include respond(tab-port) {
+            transform: translateX(-4rem) skewX(0);
+        }
+        @include respond(phone) {
+            transform: translateX(0) skewX(0);
+            padding-bottom: 2rem ;
+            position: absolute;
+            left: 26%;
+            
+        }
+    }
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        opacity: 0;
+        color: $headers-color;
+        text-transform: uppercase;
+        text-align: center;
+        transition: all .3s;
+        backface-visibility: hidden;
+    }
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    &:hover &__image {
+        transform: translateX(-4rem) scale(1.15);
+        filter: blur(3px) brightness(80%);
+    }
+}
