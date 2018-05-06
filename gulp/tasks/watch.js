@@ -23,7 +23,7 @@ watch('./app/assets/styles/**/*.css', function () {
     gulp.start('cssInject');
 });
 watch('./app/assets/scripts/**/*.js', function () {
-    gulp.start('scriptRefresh')
+    gulp.start('scriptsRefresh')
 });
 
 gulp.task('html', function () {
@@ -33,6 +33,6 @@ gulp.task('cssInject', function () {
     return gulp.src('./app/assets/styles/app.css')
         .pipe(borwserSync.stream());
 });
-gulp.task('scriptsRefresh', function () {
+gulp.task('scriptsRefresh',['script'], function () {
     borwserSync.reload();
 });
