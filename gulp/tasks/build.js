@@ -33,7 +33,9 @@ gulp.task('prefix', function () {
 gulp.task('optemizeImages', ['deleteDistFolder'], function () {
     const imgsSrc = [
         './app/assets/images',
-        './app/assets/images/**/*'
+        './app/assets/images/**/*',
+        '!./app/assets/images/*.mp4',
+        '!./app/assets/images/*.webm'
     ];
     return gulp.src(imgsSrc)
         .pipe(imagemin({
